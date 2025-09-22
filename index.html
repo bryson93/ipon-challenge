@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ipon Challenge v2 - Level Up Your Savings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>
+                    💎 Ipon Challenge 
+                    <span class="version-badge">v2.0</span>
+                </h1>
+                <p>Level Up Your Savings Journey! 🚀</p>
+            </div>
+        </div>
+
+        <div class="level-section">
+            <div class="level-info">
+                <div class="level-badge">⚫</div>
+                <div class="level-text">Iron 1<br><small>Level 1</small></div>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress">
+                    <div class="xp-fill" style="width: 0%;"></div>
+                </div>
+                <div class="xp-text">0 / 100 XP</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <span class="dashboard-icon">📅</span>
+                <div class="dashboard-value" id="daysValue">0</div>
+                <div class="dashboard-label">Days</div>
+            </div>
+            <div class="dashboard-card">
+                <span class="dashboard-icon">🔥</span>
+                <div class="dashboard-value" id="streakValue">0</div>
+                <div class="dashboard-label">Streak</div>
+            </div>
+            <div class="dashboard-card">
+                <span class="dashboard-icon">📊</span>
+                <div class="dashboard-value">0%</div>
+                <div class="dashboard-label">Progress</div>
+            </div>
+            <div class="dashboard-card" onclick="showGoalModal()">
+                <span class="dashboard-icon">🎯</span>
+                <div class="dashboard-value">Set Goal</div>
+                <div class="dashboard-label">Left</div>
+            </div>
+        </div>
+
+        <div class="main-balance">
+            <div class="balance-content">
+                <div class="balance-icon">💰</div>
+                <div class="balance-amount" id="mainBalance">₱0</div>
+                <div class="balance-label">Total Savings</div>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="section-title">
+                    <span>🎯</span> Goal Progress
+                </div>
+                <div class="progress-percentage">0%</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div class="goal-info">
+                <span>₱0 saved</span>
+                <span>Set your goal!</span>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <div class="input-container">
+                <span class="currency-symbol">₱</span>
+                <input type="number" class="currency-input" id="amountInput" placeholder="0">
+                <button class="add-btn" onclick="addSavings()">+</button>
+            </div>
+            
+            <div class="quick-amounts">
+                <div class="quick-btn" onclick="quickAdd(50)"><span>₱50</span></div>
+                <div class="quick-btn" onclick="quickAdd(100)"><span>₱100</span></div>
+                <div class="quick-btn" onclick="quickAdd(500)"><span>₱500</span></div>
+                <div class="quick-btn" onclick="quickAdd(1000)"><span>₱1K</span></div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" onclick="showAnalytics()">
+                <span class="feature-icon">📈</span>
+                <div class="feature-title">Analytics</div>
+                <div class="feature-desc">View detailed insights</div>
+            </div>
+            <div class="feature-card" onclick="showGoalModal()">
+                <span class="feature-icon">🎯</span>
+                <div class="feature-title">Set Goal</div>
+                <div class="feature-desc">Update your target</div>
+            </div>
+            <div class="feature-card" onclick="shareProgress()">
+                <span class="feature-icon">📱</span>
+                <div class="feature-title">Share</div>
+                <div class="feature-desc">Share your wins</div>
+            </div>
+            <div class="feature-card" onclick="viewHistory()">
+                <span class="feature-icon">📚</span>
+                <div class="feature-title">History</div>
+                <div class="feature-desc">Transaction log</div>
+            </div>
+            <div class="feature-card" onclick="budgetPlanner()">
+                <span class="feature-icon">📝</span>
+                <div class="feature-title">Budget</div>
+                <div class="feature-desc">Plan your saves</div>
+            </div>
+            <div class="feature-card" onclick="challenges()">
+                <span class="feature-icon">🏆</span>
+                <div class="feature-title">Challenges</div>
+                <div class="feature-desc">Join competitions</div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <div class="achievements-header">
+                <div class="section-title">
+                    <span>🏅</span> Achievements
+                </div>
+                <div style="font-size: 12px; font-weight: 600;" id="achievementsCount">0/10 Unlocked</div>
+            </div>
+            <div class="achievements-grid" id="achievementsGrid">
+            </div>
+        </div>
+
+        <div class="reset-section">
+            <button class="reset-btn" onclick="showResetModal()">Reset All Progress</button>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 15px 20px; background: #f8f9fa; color: #636e72; font-size: 10px; font-weight: 600;">
+        Bryson 2025 All Rights Reserved
+    </div>
+
+    <div class="modal" id="goalModal">
+        <div class="modal-content">
+            <h2>Set Your Savings Goal</h2>
+            <input type="number" class="modal-input" id="goalInput" placeholder="Enter amount in ₱">
+            <div>
+                <button class="modal-btn" onclick="setGoal()">Set Goal</button>
+                <button class="modal-btn" onclick="hideGoalModal()" style="background: #e9ecef; color: #333;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="resetModal">
+        <div class="modal-content">
+            <h2>Reset All Progress</h2>
+            <p>Are you sure you want to reset all your progress? This action cannot be undone.</p>
+            <div>
+                <button class="modal-btn" onclick="resetProgress()" style="background: #ff6b6b;">Yes, Reset</button>
+                <button class="modal-btn" onclick="hideResetModal()" style="background: #e9ecef; color: #333;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
